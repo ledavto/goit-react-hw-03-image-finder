@@ -63,11 +63,7 @@ export class App extends Component {
   };
 
   handleCloseModal = e => {
-    if (e.target === e.currentTarget)
-      this.setState({ modal: { isShow: false } });
-
-    // console.log(e);
-    // if (e.keyCode === 27) this.setState({ modal: { isShow: false } });
+    this.setState({ modal: { isShow: false } });
   };
 
   render() {
