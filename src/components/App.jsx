@@ -30,10 +30,12 @@ export class App extends Component {
     ) {
       // console.log(this.state.page);
       api.getSearch(this.state.searchStr, this.state.page).then(data => {
+        console.log(this.state.page < Math.ceil(data.totalHits / 12));
+        console.log(this.state.page);
         this.setState(prev => ({
           images: [...prev.images, ...data.hits],
           isLoader: false,
-          isLoadMore: prev.page + 1 < Math.ceil(data.totalHits / 12),
+          isLoadMore: prev.page < Math.ceil(data.totalHits / 12),
         }));
       });
     }
@@ -79,9 +81,7 @@ export class App extends Component {
           />
         )}
         {this.state.isLoader && <Loader />}
-        {this.state.images.length > 0 && (
-          <Button onLoadMore={this.handleLoadMore} />
-        )}
+        {this.state.isLoadMore && <Button onLoadMore={this.handleLoadMore} />}
 
         {this.state.modal.isShow && (
           <Modal
