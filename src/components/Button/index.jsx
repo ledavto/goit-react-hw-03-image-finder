@@ -4,8 +4,10 @@ export const Button = ({ onLoadMore }) => {
   // };
 
   return (
-    <button type="button" className="button" onClick={onLoadMore}>
-      <span className="button-label">Load more</span>
-    </button>
+    <footer className="loadMoreBar">
+      <button type="button" className="button" onClick={onLoadMore}>
+        <span className="button-label">Load more</span>
+      </button>
+    </footer>
   );
 };
